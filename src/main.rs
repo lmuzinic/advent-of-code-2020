@@ -1,33 +1,57 @@
 mod day1;
 mod day2;
+mod day3;
 
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
+use clap::{App, Arg};
 
 pub enum Err {
     Failed(),
 }
 
 fn main() {
-    let account = input_vec::<u32>("./input/day1.txt");
+    let matches = App::new("Advent of code 2020").arg(
+        Arg::with_name("day").short("d").required(true).takes_value(true)
+    ).get_matches();
 
-    if let Ok(result) = day1::first(&account) {
-        println!("Day 1, part 1: {}", result);
-    }
+    if let Some(a) = matches.value_of("day") {
+        match a {
+            "1" => {
+                let account = input_vec::<u32>("./input/day1.txt");
+                if let Ok(result) = day1::first(&account) {
+                    println!("Day 1, part 1: {}", result);
+                }
 
-    if let Ok(result) = day1::second(&account) {
-        println!("Day 1, part 2: {}", result);
-    }
+                if let Ok(result) = day1::second(&account) {
+                    println!("Day 1, part 2: {}", result);
+                }
+            }
+            "2" => {
+                let passwords = input_vec::<String>("./input/day2.txt");
+                if let Ok(result) = day2::first(&passwords) {
+                    println!("Day 2, part 1: {}", result);
+                }
 
-    let passwords = input_vec::<String>("./input/day2.txt");
+                if let Ok(result) = day2::second(&passwords) {
+                    println!("Day 2, part 2: {}", result);
+                }
+            }
+            "3" => {
+                let path = input_vec::<String>("./input/day3.txt");
+                if let Ok(result) = day3::first(&path) {
+                    println!("Day 3, part 1: {}", result);
+                }
 
-    if let Ok(result) = day2::first(&passwords) {
-        println!("Day 2, part 1: {}", result);
-    }
-
-    if let Ok(result) = day2::second(&passwords) {
-        println!("Day 2, part 2: {}", result);
+                if let Ok(result) = day3::second(&path) {
+                    println!("Day 3, part 2: {}", result);
+                }
+            }
+            &_ => {
+                println!("Not there yet!");
+            }
+        }
     }
 }
 
