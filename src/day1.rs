@@ -25,3 +25,25 @@ pub fn second(account: &[u32]) -> Result<u32, Err> {
 
     Err(Err::Failed())
 }
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day1_part1_sample() -> Result<(), Err> {
+        let account = [1721, 979, 366, 299, 675, 1456];
+
+        assert_eq!(first(&account)?, 514579);
+
+        Ok(())
+    }
+
+    #[test]
+    fn day1_part2_sample() -> Result<(), Err> {
+        let account = [1721, 979, 366, 299, 675, 1456];
+
+        assert_eq!(second(&account)?, 241861950);
+
+        Ok(())
+    }
+}

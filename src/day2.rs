@@ -72,3 +72,27 @@ impl FromStr for Input {
         Err(Err::Failed())
     }
 }
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day2_part1_sample() -> Result<(), Err> {
+        let input = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
+        let passwords = input.iter().map(|s| s.to_string()).collect::<Vec<String>>();
+
+        assert_eq!(first(&passwords)?, 2);
+
+        Ok(())
+    }
+
+    #[test]
+    fn day2_part2_sample() -> Result<(), Err> {
+        let input = vec!["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"];
+        let passwords = input.iter().map(|s| s.to_string()).collect::<Vec<String>>();
+
+        assert_eq!(second(&passwords)?, 1);
+
+        Ok(())
+    }
+}
