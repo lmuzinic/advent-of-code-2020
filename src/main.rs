@@ -1,20 +1,26 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
+use clap::{App, Arg};
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
-use clap::{App, Arg};
 
 pub enum Err {
     Failed(),
 }
 
 fn main() {
-    let matches = App::new("Advent of code 2020").arg(
-        Arg::with_name("day").short("d").required(true).takes_value(true)
-    ).get_matches();
+    let matches = App::new("Advent of code 2020")
+        .arg(
+            Arg::with_name("day")
+                .short("d")
+                .required(true)
+                .takes_value(true),
+        )
+        .get_matches();
 
     if let Some(a) = matches.value_of("day") {
         match a {
@@ -46,6 +52,16 @@ fn main() {
 
                 if let Ok(result) = day3::second(&path) {
                     println!("Day 3, part 2: {}", result);
+                }
+            }
+            "4" => {
+                let passports = input_vec::<String>("./input/day4.txt");
+                if let Ok(result) = day4::first(&passports) {
+                    println!("Day 4, part 1: {}", result);
+                }
+
+                if let Ok(result) = day4::second(&passports) {
+                    println!("Day 4, part 2: {}", result);
                 }
             }
             &_ => {
