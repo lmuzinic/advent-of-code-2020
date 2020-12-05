@@ -2,6 +2,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 use clap::{App, Arg};
 use std::fs::File;
@@ -63,6 +64,16 @@ fn main() {
 
                 if let Ok(result) = day4::second(&passports) {
                     println!("Day 4, part 2: {}", result);
+                }
+            }
+            "5" => {
+                let seats = input_vec::<String>("./input/day5.txt");
+                if let Ok(result) = day5::first(&seats) {
+                    println!("Day 5, part 1: {}", result);
+                }
+
+                if let Ok(result) = day5::second(&seats) {
+                    println!("Day 5, part 2: {}", result);
                 }
             }
             &_ => {
