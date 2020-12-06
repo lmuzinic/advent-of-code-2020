@@ -66,19 +66,17 @@ fn seat_id(pass: &str) -> usize {
         }
     }
 
-    let row;
-    if pass.split("").nth(7).unwrap() == "F" {
-        row = min(row_start, row_end);
+    let row = if pass.split("").nth(7).unwrap() == "F" {
+        min(row_start, row_end)
     } else {
-        row = max(row_start, row_end);
-    }
+        max(row_start, row_end)
+    };
 
-    let col;
-    if pass.split("").nth(10).unwrap() == "L" {
-        col = min(col_start, col_end);
+    let col = if pass.split("").nth(10).unwrap() == "L" {
+        min(col_start, col_end)
     } else {
-        col = max(col_start, col_end);
-    }
+        max(col_start, col_end)
+    };
 
     row * 8 + col
 }
@@ -87,6 +85,7 @@ fn diff(start: usize, end: usize) -> usize {
     (end - start + 1) / 2
 }
 
+#[allow(unused_imports)]
 mod tests {
     use super::*;
 

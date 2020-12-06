@@ -180,6 +180,7 @@ fn group(input: &[String]) -> Vec<String> {
     grouped
 }
 
+#[allow(unused_imports)]
 mod tests {
     use super::*;
 

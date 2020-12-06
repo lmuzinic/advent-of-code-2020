@@ -60,6 +60,7 @@ impl Position {
     }
 }
 
+#[allow(unused_imports, dead_code)]
 mod tests {
     use super::*;
 
@@ -77,9 +78,8 @@ mod tests {
             "#...##....#",
             ".#..#...#.#",
         ];
-        let parsed = input.iter().map(|s| s.to_string()).collect::<Vec<String>>();
 
-        parsed
+        input.iter().map(|s| s.to_string()).collect::<Vec<String>>()
     }
 
     #[test]

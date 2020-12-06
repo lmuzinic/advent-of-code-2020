@@ -26,6 +26,7 @@ pub fn second(account: &[u32]) -> Result<u32, Err> {
     Err(Err::Failed())
 }
 
+#[allow(unused_imports)]
 mod tests {
     use super::*;
 
