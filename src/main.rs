@@ -6,9 +6,7 @@ mod day5;
 mod day6;
 
 use clap::{App, Arg};
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+use aoc::input_vec;
 
 #[derive(Debug)]
 pub enum Err {
@@ -92,28 +90,4 @@ fn main() {
             }
         }
     }
-}
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
-
-fn input_vec<T: std::str::FromStr>(filename: &str) -> Vec<T> {
-    let mut input: Vec<T> = Vec::new();
-
-    if let Ok(lines) = read_lines(filename) {
-        for line in lines {
-            if let Ok(value) = line {
-                if let Ok(parsed) = value.parse::<T>() {
-                    input.push(parsed);
-                }
-            }
-        }
-    }
-
-    input
 }
