@@ -5,9 +5,10 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
-use clap::{App, Arg};
 use aoc::input_vec;
+use clap::{App, Arg};
 
 #[derive(Debug)]
 pub enum Err {
@@ -94,6 +95,16 @@ fn main() {
 
                 if let Ok(result) = day7::second(&bags) {
                     println!("Day 7, part 2: {}", result);
+                }
+            }
+            "8" => {
+                let instructions = input_vec::<String>("./input/day8.txt");
+                if let Ok(result) = day8::first(&instructions) {
+                    println!("Day 8, part 1: {}", result);
+                }
+
+                if let Ok(result) = day8::second(&instructions) {
+                    println!("Day 8, part 2: {}", result);
                 }
             }
             &_ => {

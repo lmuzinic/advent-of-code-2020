@@ -1,6 +1,6 @@
 use crate::Err;
-use std::collections::HashMap;
 use regex::Regex;
+use std::collections::HashMap;
 use std::ops::Index;
 
 pub fn first(input: &[String]) -> Result<u64, Err> {
