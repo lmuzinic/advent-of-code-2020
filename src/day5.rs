@@ -20,7 +20,7 @@ pub fn second(input: &[String]) -> Result<u64, Err> {
         all.push(id);
     }
 
-    all.sort();
+    all.sort_unstable();
 
     let mut prev = all.first().unwrap() - 1;
     for id in &all {

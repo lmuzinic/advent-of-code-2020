@@ -6,6 +6,7 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 use aoc::input_vec;
 use clap::{App, Arg};
@@ -105,6 +106,16 @@ fn main() {
 
                 if let Ok(result) = day8::second(&instructions) {
                     println!("Day 8, part 2: {}", result);
+                }
+            }
+            "9" => {
+                let numbers = input_vec::<u128>("./input/day9.txt");
+                if let Ok(result) = day9::first(&numbers, 25) {
+                    println!("Day 9, part 1: {}", result);
+
+                    if let Ok(result) = day9::second(&numbers, result) {
+                        println!("Day 9, part 2: {}", result);
+                    }
                 }
             }
             &_ => {
