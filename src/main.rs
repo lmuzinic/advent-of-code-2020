@@ -1,4 +1,5 @@
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -116,6 +117,16 @@ fn main() {
                     if let Ok(result) = day9::second(&numbers, result) {
                         println!("Day 9, part 2: {}", result);
                     }
+                }
+            }
+            "10" => {
+                let mut adapters = input_vec::<u64>("./input/day10.txt");
+                if let Ok(result) = day10::first(adapters.as_mut_slice()) {
+                    println!("Day 10, part 1: {}", result);
+                }
+
+                if let Ok(result) = day10::second(adapters.as_mut_slice()) {
+                    println!("Day 10, part 2: {}", result);
                 }
             }
             &_ => {
